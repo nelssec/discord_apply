@@ -80,7 +80,7 @@ async function showReasonModal(
   const member = interaction.member as GuildMember;
   const hasPermission =
     form.manager_role_ids.length === 0 ||
-    form.manager_role_ids.some((roleId) => member.roles.cache.has(roleId)) ||
+    form.manager_role_ids.some((roleId: string) => member.roles.cache.has(roleId)) ||
     member.permissions.has('Administrator');
 
   if (!hasPermission) {

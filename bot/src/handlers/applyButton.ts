@@ -56,19 +56,19 @@ export async function buildApplicationModal(
     return 'Unable to verify your membership.';
   }
 
-  const userId = 'user' in member ? member.user.id : member.id;
-  const memberRoles = Array.isArray(member.roles)
-    ? member.roles
-    : member.roles.cache.map((r) => r.id);
+  const userId = 'user' in member ? (member as GuildMember).user.id : (member as APIInteractionGuildMember).user.id;
+  const memberRoles: string[] = Array.isArray(member.roles)
+    ? member.roles as string[]
+    : (member as GuildMember).roles.cache.map((r) => r.id);
 
-  const hasRestricted = form.restricted_role_ids.some((roleId) =>
+  const hasRestricted = form.restricted_role_ids.some((roleId: string) =>
     memberRoles.includes(roleId)
   );
   if (hasRestricted) {
     return 'You have a role that prevents you from applying to this form.';
   }
 
-  const hasAllRequired = form.required_role_ids.every((roleId) =>
+  const hasAllRequired = form.required_role_ids.every((roleId: string) =>
     memberRoles.includes(roleId)
   );
   if (!hasAllRequired && form.required_role_ids.length > 0) {

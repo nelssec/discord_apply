@@ -80,7 +80,7 @@ export async function handleApplicationModal(
 
       const msg = await ticketChannel.send({
         content: form.ping_role_ids.length > 0
-          ? form.ping_role_ids.map((id) => `<@&${id}>`).join(' ')
+          ? form.ping_role_ids.map((id: string) => `<@&${id}>`).join(' ')
           : undefined,
         embeds: [appEmbed],
         components: reviewButtons,
@@ -147,7 +147,7 @@ export async function handleApplicationModal(
 
         await (logChannel as TextChannel).send({
           content: form.ping_role_ids.length > 0
-            ? form.ping_role_ids.map((id) => `<@&${id}>`).join(' ')
+            ? form.ping_role_ids.map((id: string) => `<@&${id}>`).join(' ')
             : undefined,
           embeds: [appEmbed],
           components: reviewButtons,
