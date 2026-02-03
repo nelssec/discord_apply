@@ -5,7 +5,7 @@ import {
   PermissionFlagsBits,
   TextChannel,
 } from 'discord.js';
-import type { Form } from '../../../shared/types.js';
+import type { Form } from '../types.js';
 
 export async function createTicketChannel(
   guild: Guild,
@@ -19,7 +19,7 @@ export async function createTicketChannel(
 
   const permissionOverwrites: Array<{
     id: string;
-    allow: bigint[];
+    allow?: bigint[];
     deny?: bigint[];
   }> = [
     {

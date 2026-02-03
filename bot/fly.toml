@@ -1,0 +1,11 @@
+app = 'guild-apps-bot'
+primary_region = 'sjc'
+
+[build]
+
+[env]
+  NODE_ENV = 'production'
+
+[mounts]
+  source = 'guild_apps_data'
+  destination = '/data'

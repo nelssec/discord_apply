@@ -14,7 +14,7 @@ import {
   getLastApplicationByUserAndForm,
   getPendingApplicationByUserAndForm,
 } from '../database.js';
-import type { Form, Question } from '../../../shared/types.js';
+import type { Form, Question } from '../types.js';
 
 export async function handleApplyButton(
   interaction: ButtonInteraction | StringSelectMenuInteraction
