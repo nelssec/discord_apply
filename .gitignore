@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+bot/dist/
+web/.next/
+web/out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Database
+data/*.db
+data/*.db-wal
+data/*.db-shm
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# TypeScript
+*.tsbuildinfo
+
+# Next.js
+web/.next/
+web/out/
+web/next-env.d.ts
