@@ -49,7 +49,7 @@ export default function DashboardPage() {
         {!loading && !error && guilds.length === 0 && (
           <div className="text-center py-12">
             <p className="text-gray-400 mb-4">
-              No servers found. Make sure you have the Manage Server permission.
+              No servers found. You need to be a member of a server where the bot is installed.
             </p>
           </div>
         )}
@@ -63,6 +63,7 @@ export default function DashboardPage() {
                 name={guild.name}
                 icon={guild.icon}
                 hasBot={guild.hasBot}
+                isAdmin={guild.isAdmin}
               />
             ))}
           </div>

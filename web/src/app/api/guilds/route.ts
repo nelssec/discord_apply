@@ -19,17 +19,17 @@ export async function GET() {
     const botGuildIds = new Set(botGuilds.map((g) => g.id));
 
     const guilds: GuildWithBot[] = userGuilds
-      .filter((guild) => hasManageGuildPermission(guild.permissions))
+      .filter((guild) => botGuildIds.has(guild.id))
       .map((guild) => ({
         id: guild.id,
         name: guild.name,
         icon: guild.icon,
-        hasBot: botGuildIds.has(guild.id),
+        hasBot: true,
         isAdmin: hasManageGuildPermission(guild.permissions),
       }))
       .sort((a, b) => {
-        if (a.hasBot && !b.hasBot) return -1;
-        if (!a.hasBot && b.hasBot) return 1;
+        if (a.isAdmin && !b.isAdmin) return -1;
+        if (!a.isAdmin && b.isAdmin) return 1;
         return a.name.localeCompare(b.name);
       });
 

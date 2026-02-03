@@ -7,9 +7,10 @@ interface GuildCardProps {
   name: string;
   icon: string | null;
   hasBot: boolean;
+  isAdmin?: boolean;
 }
 
-export default function GuildCard({ id, name, icon, hasBot }: GuildCardProps) {
+export default function GuildCard({ id, name, icon, hasBot, isAdmin }: GuildCardProps) {
   const iconUrl = getGuildIconUrl(id, icon);
 
   if (!hasBot) {
@@ -67,7 +68,9 @@ export default function GuildCard({ id, name, icon, hasBot }: GuildCardProps) {
         )}
         <div className="flex-1">
           <h3 className="font-semibold text-white">{name}</h3>
-          <p className="text-sm text-discord-green">Bot active</p>
+          <p className="text-sm text-discord-green">
+            {isAdmin ? 'Admin' : 'Member'}
+          </p>
         </div>
         <svg
           className="w-5 h-5 text-gray-400"
