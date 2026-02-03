@@ -135,7 +135,7 @@ export default function ApplicationDetailPage() {
               </div>
               <span
                 className={`px-4 py-2 rounded-full text-sm font-medium border ${
-                  statusColors[application.status]
+                  statusColors[application.status as keyof typeof statusColors]
                 }`}
               >
                 {application.status.charAt(0).toUpperCase() + application.status.slice(1)}

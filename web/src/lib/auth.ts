@@ -1,6 +1,14 @@
 import { NextAuthOptions, getServerSession } from 'next-auth';
 import DiscordProvider from 'next-auth/providers/discord';
 
+interface DiscordProfile {
+  id: string;
+  username: string;
+  discriminator: string;
+  avatar: string | null;
+  email?: string;
+}
+
 declare module 'next-auth' {
   interface Session {
     user: {
@@ -38,7 +46,7 @@ export const authOptions: NextAuthOptions = {
       if (account && profile) {
         token.accessToken = account.access_token!;
         token.refreshToken = account.refresh_token!;
-        token.userId = profile.id as string;
+        token.userId = (profile as DiscordProfile).id;
       }
       return token;
     },
