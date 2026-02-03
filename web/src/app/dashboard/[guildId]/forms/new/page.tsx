@@ -58,11 +58,15 @@ export default function NewFormPage() {
               type="text"
               id="name"
               value={name}
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setName(e.target.value.slice(0, 45))}
               required
+              maxLength={45}
               placeholder="e.g., Staff Application"
               className="w-full bg-discord-darker text-white px-4 py-3 rounded-lg border border-gray-600 focus:border-discord-blurple focus:outline-none"
             />
+            <p className={`text-xs mt-1 ${name.length >= 40 ? 'text-discord-yellow' : 'text-gray-500'}`}>
+              {name.length}/45 characters
+            </p>
           </div>
 
           <div>

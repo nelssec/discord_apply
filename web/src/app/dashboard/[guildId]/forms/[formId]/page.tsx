@@ -251,13 +251,19 @@ export default function EditFormPage() {
                   </div>
 
                   <div className="space-y-3">
-                    <input
-                      type="text"
-                      value={question.label}
-                      onChange={(e) => updateQuestion(index, { label: e.target.value })}
-                      placeholder="Question text"
-                      className="w-full bg-discord-darker text-white px-3 py-2 rounded border border-gray-600 focus:border-discord-blurple focus:outline-none"
-                    />
+                    <div>
+                      <input
+                        type="text"
+                        value={question.label}
+                        onChange={(e) => updateQuestion(index, { label: e.target.value.slice(0, 45) })}
+                        placeholder="Question text"
+                        maxLength={45}
+                        className="w-full bg-discord-darker text-white px-3 py-2 rounded border border-gray-600 focus:border-discord-blurple focus:outline-none"
+                      />
+                      <p className={`text-xs mt-1 ${question.label.length >= 40 ? 'text-discord-yellow' : 'text-gray-500'}`}>
+                        {question.label.length}/45 characters
+                      </p>
+                    </div>
 
                     <div className="grid grid-cols-2 gap-3">
                       <select
@@ -286,8 +292,9 @@ export default function EditFormPage() {
                     <input
                       type="text"
                       value={question.placeholder}
-                      onChange={(e) => updateQuestion(index, { placeholder: e.target.value })}
+                      onChange={(e) => updateQuestion(index, { placeholder: e.target.value.slice(0, 100) })}
                       placeholder="Placeholder text (optional)"
+                      maxLength={100}
                       className="w-full bg-discord-darker text-white px-3 py-2 rounded border border-gray-600 focus:border-discord-blurple focus:outline-none text-sm"
                     />
                   </div>
@@ -296,7 +303,7 @@ export default function EditFormPage() {
             </div>
 
             <p className="text-xs text-gray-500 mt-4">
-              Note: Discord modals support a maximum of 5 questions.
+              Discord limits: Max 5 questions, 45 chars per question label, 100 chars per placeholder.
             </p>
           </div>
 
