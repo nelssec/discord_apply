@@ -57,6 +57,23 @@ export default async function Home() {
             Add to Server
           </a>
         </div>
+
+        <div className="mt-12 flex gap-6 justify-center text-sm text-gray-500">
+          <Link href="/privacy" className="hover:text-gray-300">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="hover:text-gray-300">
+            Terms of Service
+          </Link>
+          <a
+            href="https://github.com/nelssec/discord_apply"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-gray-300"
+          >
+            GitHub
+          </a>
+        </div>
       </div>
     </main>
   );
