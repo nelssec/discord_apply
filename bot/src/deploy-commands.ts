@@ -12,6 +12,23 @@ const commands = [
         .setRequired(false)
     )
     .toJSON(),
+  new SlashCommandBuilder()
+    .setName('panel')
+    .setDescription('Post an application panel with a dropdown menu')
+    .addStringOption((option) =>
+      option
+        .setName('title')
+        .setDescription('Title for the panel embed')
+        .setRequired(false)
+    )
+    .addStringOption((option) =>
+      option
+        .setName('description')
+        .setDescription('Description for the panel embed')
+        .setRequired(false)
+    )
+    .setDefaultMemberPermissions(0)
+    .toJSON(),
 ];
 
 const rest = new REST().setToken(BOT_TOKEN);

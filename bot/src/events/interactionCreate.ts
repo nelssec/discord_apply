@@ -1,5 +1,6 @@
 import type { Interaction } from 'discord.js';
 import { handleApplyCommand } from '../commands/apply.js';
+import { handlePanelCommand } from '../commands/panel.js';
 import { handleApplyButton } from '../handlers/applyButton.js';
 import { handleApplicationModal } from '../handlers/applicationModal.js';
 import { handleReviewButtons } from '../handlers/reviewButtons.js';
@@ -10,6 +11,9 @@ export async function handleInteraction(interaction: Interaction): Promise<void>
       switch (interaction.commandName) {
         case 'apply':
           await handleApplyCommand(interaction);
+          break;
+        case 'panel':
+          await handlePanelCommand(interaction);
           break;
       }
     } else if (interaction.isButton()) {
@@ -38,7 +42,7 @@ export async function handleInteraction(interaction: Interaction): Promise<void>
         await handleReviewButtons(interaction);
       }
     } else if (interaction.isStringSelectMenu()) {
-      if (interaction.customId === 'apply_form_select') {
+      if (interaction.customId === 'apply_form_select' || interaction.customId === 'panel_form_select') {
         await handleApplyButton(interaction);
       }
     }
